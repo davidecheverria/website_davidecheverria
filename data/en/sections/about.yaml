@@ -1,0 +1,78 @@
+# section information
+section:
+  name: Autor
+  id: about
+  enable: true
+  weight: 1
+  showOnNavbar: true
+  template: sections/about.html
+
+# your designation
+designation: Software Engineer
+# your company information
+company:
+  name: Example Co.
+  url: "https://www.example.com"
+
+# your resume. this file path should be relative to you "static" directory
+resume: "files/resume.pdf"
+
+# a summary about you
+summary: 'Gracias por visitar mi sitio, estoy convencido que difundir el conocimiento permite edificar sociedades con mayores oportunidades, empoderadas y libres. Sobre esta última categoría me gustaría compartir una idea fundamental de Amartya Sen (ganador del Premio Nobel de Economía en 1998) expuesta en su libro “Desarrollo y Libertad”: i) El aumento de la libertad mejora la capacidad de los individuos para ayudarse a sí mismos, así como para influir en el mundo. La ciencia, el arte, el deporte, el amor son fuentes de liberación en varias dimensionea; para muchos el acceso a ellas son un privilegio y probablemente muchas mentes brillantes no pudieron volar. Richard Feynman (ganador del Premio Nobel de Física en 1965) tiene una frase maravillosa y define mi forma de entender y vivir el aprendizaje: “Estudia mucho lo que sea de interés para ti y hazlo de la forma más indisciplinada, irreverente y original posible”. He creado este espacio sin mayores pretensiones, quiero ser parte de una gran comunidad vinculada a la filosofía del “software libre” que sueña con un mundo mejor para todos, sin importar condición de origen.'
+
+# your social links
+# give as many as you want. use font-awesome for the icons.
+socialLinks:
+- name: Email
+  icon: "fas fa-envelope"
+  url: "dhecheverria@gmail.com"
+
+- name: Github
+  icon: "fab fa-github"
+  url: "https://www.github.com/davidecheverria"
+
+#- name: Stackoverflow
+  #icon: "fab fa-stack-overflow"
+  #url: "#"
+
+- name: LinkedIn
+  icon: "fab fa-linkedin"
+  url: "https://www.linkedin.com/in/david-echeverria-a94a91107/"
+
+- name: Twitter
+  icon: "fab fa-twitter"
+  url: "https://twitter.com/dhecheverria/"
+
+#- name: Facebook
+  #icon: "fab fa-facebook"
+  #url: "#"
+
+# your soft skills
+# give the percentage between 50 to 100 with 5 intervals.
+# currently supported colors: blue, yellow, pink, green, sky, orange
+softSkills:
+- name: Liderazgo
+  percentage: 95
+  color: blue
+- name: Trabajo en equipo
+  percentage: 90
+  color: yellow
+- name: Comunicación
+  percentage: 90
+  color: pink
+- name: Creatividad
+  percentage: 95
+  color: green
+- name: Pensamiento crítico
+  percentage: 85
+  color: sky
+- name: Resolución de problemas
+  percentage: 95
+  color: orange
+# you can also provide color code instead of pre-defined color name
+# - name: Example 1
+#   percentage: 75
+#   color: "#00adb5"
+# - name: Example 2
+#   percentage: 65
+#   color: "#8b8383"

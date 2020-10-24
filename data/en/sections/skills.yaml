@@ -1,0 +1,49 @@
+# section information
+section:
+  name: Habilidades
+  id: skills
+  enable: true
+  weight: 2
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your Skills.
+# Give a summary of you each skill in the summary section.
+skills:
+- name: R
+  icon: "images/skills/R.png"
+  summary: "Data mining, visualización de datos, procesamiento de bases de datos, machine learning, modelos econométricos, métodos estadísticos, muestreo, etc."
+  url: "https://kubernetes.io/"
+
+- name: Python
+  icon: "images/skills/Python.png"
+  summary: "Manejo de bases de datos, machine learning, web scrapping, visualización de datos, etc."
+  url: "https://golang.org/"
+
+- name: Qgis
+  icon: "images/skills/Qgis.jpg"
+  summary: "Implementación de un sistema de información geográfico, geoestadística, cartografía, georeferenciación, etc."
+
+- name: Microsoft Office
+  icon: "images/skills/office.jpg"
+  summary: "Uso avanzado de los aplicativos Excel, Word, Power Point, Forms, Teams, etc."
+  url: "https://www.docker.com/"
+
+- name: Stata
+  icon: "images/skills/stata.jpg"
+  summary: "Modelos econométricos, procesamiento de bases de datos."
+  url: "https://prometheus.io/"
+
+- name: Tableu
+  icon: "images/skills/tableau.png"
+  summary: "Using as the main operating system. Capable of writing bash/shell scripts."
+
+- name: Power BI
+  icon: "images/skills/powerbi.png"
+  summary: "Modelazión de datos, análisis y visualización."
+  url: "https://git-scm.com/"
+
+- name: SPSS
+  icon: "images/skills/spss.png"
+  summary: "Procesamiento de bases de datos, métodos cuantativos."

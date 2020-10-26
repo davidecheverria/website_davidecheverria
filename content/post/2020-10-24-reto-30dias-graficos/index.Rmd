@@ -1,5 +1,5 @@
 ---
-title: 'Reto 2020: 30 dias de gráficos'
+title: 'Reto 2020: 30 días de gráficos'
 author: David Echeverria
 date: '2020-10-24'
 slug: reto_30dias_graficos
@@ -20,11 +20,25 @@ output:
     theme: lumen
 ---
 
-En esta entrada compartiré los códigos y resultados del reto 30 días de gráficos organizado por **R para Ciencia de Datos** (@R4DS_es).
+En esta entrada compartiré los códigos y resultados del reto [\#30díasdegráficos](https://twitter.com/hashtag/30d%C3%ADasdegr%C3%A1ficos?src=hashtag_click) con R organizado por [R para Ciencia de Datos](https://github.com/cienciadedatos/datos-de-miercoles/blob/master/30-dias-de-graficos-2020.md) que tuvo lugar desde el 2 de mayo de 2020. Esta iniciativa de la comunidad hispanohablante de R fue en conmeración de [Florence Nightingale](https://es.wikipedia.org/wiki/Florence_Nightingale). Los gráficos los desarrollé con [Ramiro Villarruel](https://twitter.com/ramirovillamey), bajo la cuenta de la [Soluciones Analíticas y Económicas](https://twitter.com/SEYA_Ecu), con quienes colaboro.
+
+La comunidad de usuarios que participó en este reto fue espectucular, me permito sugerir que visiten las también páginas de estos usuarios:
+
+-   [Adriana Angulo](https://github.com/AnguloB/datosdemiercoles/tree/master/00_30diasDeGraficos)
+
+-   [Guillem Salazar](https://github.com/GuillemSalazar/desafio_30_dias_de_graficos)
+
+-   [Violeta](https://twitter.com/violetrzn)
+
+-   [Daniel Redondo](https://github.com/danielredondo/30diasdegraficos)
+
+-   [Picando Números](https://github.com/picanum/DatosDeMiercoles/tree/master/30-dias-de-graficos)
+
+Esto hace parte fundamental de un curso de visualización de datos con R que he desarrollado bajo el enfoque de la gramática de gráficos de ggplot.
 
 ## Día 1: Barras
 
-### Base de datos: Premios nobel por país y disciplina tomado de wikipedia
+Base de datos: Premios nobel por país y disciplina tomado de wikipedia
 
 ```{r}
     Pais <- c("Estados Unidos","Reino Unido","Francia","Canadá","Noruega","Alemania","India","Países Bajos","Suecia","Austria","Chipre","Finlandia","Israel","Italia","Polonia","Rusia","Unión Soviética","Estados Unidos","Alemania","Reino Unido","Francia","Rusia","Países Bajos","Japón","Suiza","Suecia","Italia","Dinamarca","Austria","Canadá","Taiwán","China","Bélgica","Hungría","India","Irlanda","Pakistán","Polonia","Estados Unidos","Alemania","Reino Unido","Francia","Suiza","Japón","Israel","Canadá","Suecia","Países Bajos","Polonia","India","Argentina","Bélgica","Dinamarca","Finlandia","Italia","Nueva Zelanda","Noruega","Austria","Unión Soviética","México","Hungría","Checoslovaquia","Australia","Egipto","Turquía","Estados Unidos","Reino Unido","Alemania","Francia","Suecia","Suiza","Australia","Dinamarca","Austria","Bélgica","Japón","Italia","Argentina","Rusia","Canadá","España","Países Bajos","Noruega","China","Portugal","Venezuela","Sudáfrica","Hungría","India","Irlanda","Luxemburgo","Nueva Zelanda","Polonia","Francia","Estados Unidos","Alemania","Reino Unido","Suecia","Italia","España","Unión Soviética","Irlanda","Polonia","Dinamarca","Noruega","Chile","Grecia","Japón","Sudáfrica","Suiza","Perú","Austria","Bélgica","Bielorrusia","Canadá","Checoslovaquia","China","Colombia","Egipto","Finlandia","Guatemala","Hungría","India","Islandia","Israel","México","Nigeria","Australia","Portugal","Rumania","Santa Lucía","Turquía","Yugoslavia","Estados Unidos","Reino Unido","Francia","Suecia","Alemania","Sudáfrica","Bélgica","Suiza","Israel","Austria","Canadá","Unión Soviética","Argentina","Bangladés","Liberia","Egipto","Timor Oriental","Noruega","India","Países Bajos","Etiopía","Japón","Guatemala","Italia","México","Dinamarca","Kenia","Costa Rica","Vietnam nota 4","Irlanda","Birmania (o Myanmar)","Palestina","Corea del Sur","Ghana","Irán","Yemen","China","Polonia","Finlandia","Pakistán","Rumania","Tíbet","Túnez","Colombia","Irak","República Democrática del Congo","Naciones Unidas u otras Organizaciones Internacionales")
@@ -37,8 +51,7 @@ En esta entrada compartiré los códigos y resultados del reto 30 días de gráf
 
 ```
 
-
-### Procesamiento de la base de datos tidydata
+Procesamiento de la base de datos formato tidydata
 
 ```{r}
 
@@ -47,21 +60,18 @@ library(tidyverse)
     premios.nobel2 <- spread(data = premios.nobel, key = Disciplina, value = Numero) 
     premios.nobel2[is.na(premios.nobel2)] = 0
     premios.nobel2$Total <- apply(premios.nobel2[,2:7],1,sum)
-    
     premios.nobel3<- premios.nobel2[-40,]
-    
     premios.nobel4 <-  subset(premios.nobel3,premios.nobel3$Total>8)
     
     
 ```
 
-### Gráfico de barras
+Gráfico de barras
 
 ```{r}
 library(ggplot2)
 library(ggdark)
-library(gganimate)
-    p<-ggplot(premios.nobel4, aes(x= reorder (Pais, Total), y=Total, fill=Pais,label=Total)) +
+p<-ggplot(premios.nobel4, aes(x= reorder (Pais, Total), y=Total, fill=Pais,label=Total)) +
       geom_bar(stat="identity") +labs(title = "Top 20 países con más Premios Nobel hasta el 2019",
       caption="Fuente: Wikipedia \nElaboración: @dhecheverria | @ramirovillamey \nNota: Incluye el Premio de Ciencias Económicas \n del Banco de Suecia en Memoria de Alfred Nobel ",y="Número de galardonados",x="")+
       dark_theme_gray()+
@@ -78,17 +88,16 @@ library(gganimate)
 ### Animación 1
 
 ```{r}
-#opcion 1
+library(gganimate)
+
     p+transition_states(Total, wrap = FALSE) +
       shadow_mark()
-    
-
 ```
 
 ### Animación 2
 
 ```{r}
-    #opcion 2
+
     p + transition_states(
       Total,
       transition_length = 5,
@@ -98,4 +107,3 @@ library(gganimate)
       ease_aes('sine-in-out')
 
 ```
-

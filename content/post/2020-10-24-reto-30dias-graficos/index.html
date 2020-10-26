@@ -1,5 +1,5 @@
 ---
-title: 'Reto 2020: 30 dias de gráficos'
+title: 'Reto 2020: 30 días de gráficos'
 author: David Echeverria
 date: '2020-10-24'
 slug: reto_30dias_graficos
@@ -25,19 +25,25 @@ output:
 <script src="index_files/anchor-sections/anchor-sections.js"></script>
 
 
-<p>En esta entrada compartiré los códigos y resultados del reto 30 días de gráficos organizado por <strong>R para Ciencia de Datos</strong> (<span class="citation">@R4DS_es</span>).</p>
+<p>En esta entrada compartiré los códigos y resultados del reto <a href="https://twitter.com/hashtag/30d%C3%ADasdegr%C3%A1ficos?src=hashtag_click">#30díasdegráficos</a> con R organizado por <a href="https://github.com/cienciadedatos/datos-de-miercoles/blob/master/30-dias-de-graficos-2020.md">R para Ciencia de Datos</a> que tuvo lugar desde el 2 de mayo de 2020. Esta iniciativa de la comunidad hispanohablante de R fue en conmeración de <a href="https://es.wikipedia.org/wiki/Florence_Nightingale">Florence Nightingale</a>. Los gráficos los desarrollé con <a href="https://twitter.com/ramirovillamey">Ramiro Villarruel</a>, bajo la cuenta de la <a href="https://twitter.com/SEYA_Ecu">Soluciones Analíticas y Económicas</a>, con quienes colaboro.</p>
+<p>La comunidad de usuarios que participó en este reto fue espectucular, me permito sugerir que visiten las también páginas de estos usuarios:</p>
+<ul>
+<li><p><a href="https://github.com/AnguloB/datosdemiercoles/tree/master/00_30diasDeGraficos">Adriana Angulo</a></p></li>
+<li><p><a href="https://github.com/GuillemSalazar/desafio_30_dias_de_graficos">Guillem Salazar</a></p></li>
+<li><p><a href="https://twitter.com/violetrzn">Violeta</a></p></li>
+<li><p><a href="https://github.com/danielredondo/30diasdegraficos">Daniel Redondo</a></p></li>
+<li><p><a href="https://github.com/picanum/DatosDeMiercoles/tree/master/30-dias-de-graficos">Picando Números</a></p></li>
+</ul>
+<p>Esto hace parte fundamental de un curso de visualización de datos con R que he desarrollado bajo el enfoque de la gramática de gráficos de ggplot.</p>
 <div id="día-1-barras" class="section level2">
 <h2>Día 1: Barras</h2>
-<div id="base-de-datos-premios-nobel-por-país-y-disciplina-tomado-de-wikipedia" class="section level3">
-<h3>Base de datos: Premios nobel por país y disciplina tomado de wikipedia</h3>
+<p>Base de datos: Premios nobel por país y disciplina tomado de wikipedia</p>
 <pre class="r"><code>    Pais &lt;- c(&quot;Estados Unidos&quot;,&quot;Reino Unido&quot;,&quot;Francia&quot;,&quot;Canadá&quot;,&quot;Noruega&quot;,&quot;Alemania&quot;,&quot;India&quot;,&quot;Países Bajos&quot;,&quot;Suecia&quot;,&quot;Austria&quot;,&quot;Chipre&quot;,&quot;Finlandia&quot;,&quot;Israel&quot;,&quot;Italia&quot;,&quot;Polonia&quot;,&quot;Rusia&quot;,&quot;Unión Soviética&quot;,&quot;Estados Unidos&quot;,&quot;Alemania&quot;,&quot;Reino Unido&quot;,&quot;Francia&quot;,&quot;Rusia&quot;,&quot;Países Bajos&quot;,&quot;Japón&quot;,&quot;Suiza&quot;,&quot;Suecia&quot;,&quot;Italia&quot;,&quot;Dinamarca&quot;,&quot;Austria&quot;,&quot;Canadá&quot;,&quot;Taiwán&quot;,&quot;China&quot;,&quot;Bélgica&quot;,&quot;Hungría&quot;,&quot;India&quot;,&quot;Irlanda&quot;,&quot;Pakistán&quot;,&quot;Polonia&quot;,&quot;Estados Unidos&quot;,&quot;Alemania&quot;,&quot;Reino Unido&quot;,&quot;Francia&quot;,&quot;Suiza&quot;,&quot;Japón&quot;,&quot;Israel&quot;,&quot;Canadá&quot;,&quot;Suecia&quot;,&quot;Países Bajos&quot;,&quot;Polonia&quot;,&quot;India&quot;,&quot;Argentina&quot;,&quot;Bélgica&quot;,&quot;Dinamarca&quot;,&quot;Finlandia&quot;,&quot;Italia&quot;,&quot;Nueva Zelanda&quot;,&quot;Noruega&quot;,&quot;Austria&quot;,&quot;Unión Soviética&quot;,&quot;México&quot;,&quot;Hungría&quot;,&quot;Checoslovaquia&quot;,&quot;Australia&quot;,&quot;Egipto&quot;,&quot;Turquía&quot;,&quot;Estados Unidos&quot;,&quot;Reino Unido&quot;,&quot;Alemania&quot;,&quot;Francia&quot;,&quot;Suecia&quot;,&quot;Suiza&quot;,&quot;Australia&quot;,&quot;Dinamarca&quot;,&quot;Austria&quot;,&quot;Bélgica&quot;,&quot;Japón&quot;,&quot;Italia&quot;,&quot;Argentina&quot;,&quot;Rusia&quot;,&quot;Canadá&quot;,&quot;España&quot;,&quot;Países Bajos&quot;,&quot;Noruega&quot;,&quot;China&quot;,&quot;Portugal&quot;,&quot;Venezuela&quot;,&quot;Sudáfrica&quot;,&quot;Hungría&quot;,&quot;India&quot;,&quot;Irlanda&quot;,&quot;Luxemburgo&quot;,&quot;Nueva Zelanda&quot;,&quot;Polonia&quot;,&quot;Francia&quot;,&quot;Estados Unidos&quot;,&quot;Alemania&quot;,&quot;Reino Unido&quot;,&quot;Suecia&quot;,&quot;Italia&quot;,&quot;España&quot;,&quot;Unión Soviética&quot;,&quot;Irlanda&quot;,&quot;Polonia&quot;,&quot;Dinamarca&quot;,&quot;Noruega&quot;,&quot;Chile&quot;,&quot;Grecia&quot;,&quot;Japón&quot;,&quot;Sudáfrica&quot;,&quot;Suiza&quot;,&quot;Perú&quot;,&quot;Austria&quot;,&quot;Bélgica&quot;,&quot;Bielorrusia&quot;,&quot;Canadá&quot;,&quot;Checoslovaquia&quot;,&quot;China&quot;,&quot;Colombia&quot;,&quot;Egipto&quot;,&quot;Finlandia&quot;,&quot;Guatemala&quot;,&quot;Hungría&quot;,&quot;India&quot;,&quot;Islandia&quot;,&quot;Israel&quot;,&quot;México&quot;,&quot;Nigeria&quot;,&quot;Australia&quot;,&quot;Portugal&quot;,&quot;Rumania&quot;,&quot;Santa Lucía&quot;,&quot;Turquía&quot;,&quot;Yugoslavia&quot;,&quot;Estados Unidos&quot;,&quot;Reino Unido&quot;,&quot;Francia&quot;,&quot;Suecia&quot;,&quot;Alemania&quot;,&quot;Sudáfrica&quot;,&quot;Bélgica&quot;,&quot;Suiza&quot;,&quot;Israel&quot;,&quot;Austria&quot;,&quot;Canadá&quot;,&quot;Unión Soviética&quot;,&quot;Argentina&quot;,&quot;Bangladés&quot;,&quot;Liberia&quot;,&quot;Egipto&quot;,&quot;Timor Oriental&quot;,&quot;Noruega&quot;,&quot;India&quot;,&quot;Países Bajos&quot;,&quot;Etiopía&quot;,&quot;Japón&quot;,&quot;Guatemala&quot;,&quot;Italia&quot;,&quot;México&quot;,&quot;Dinamarca&quot;,&quot;Kenia&quot;,&quot;Costa Rica&quot;,&quot;Vietnam nota 4&quot;,&quot;Irlanda&quot;,&quot;Birmania (o Myanmar)&quot;,&quot;Palestina&quot;,&quot;Corea del Sur&quot;,&quot;Ghana&quot;,&quot;Irán&quot;,&quot;Yemen&quot;,&quot;China&quot;,&quot;Polonia&quot;,&quot;Finlandia&quot;,&quot;Pakistán&quot;,&quot;Rumania&quot;,&quot;Tíbet&quot;,&quot;Túnez&quot;,&quot;Colombia&quot;,&quot;Irak&quot;,&quot;República Democrática del Congo&quot;,&quot;Naciones Unidas u otras Organizaciones Internacionales&quot;)
     Numero &lt;- c(48,9,4,3,3,2,2,2,2,1,1,1,1,1,1,1,1,88,25,23,12,10,9,8,6,4,4,3,3,3,2,2,1,1,1,1,1,1,65,31,27,7,7,7,4,4,4,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,96,30,16,10,8,6,6,5,5,4,4,3,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,15,12,10,8,7,6,5,5,4,5,3,3,2,2,2,2,2,1,2,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,12,9,5,4,4,3,3,3,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,23)
     Disciplina &lt;- c(&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Economía&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Física&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Química&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Fisiología o Medicina&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Literatura&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;,&quot;Paz&quot;)
     
     premios.nobel &lt;- data.frame(Pais,Numero,Disciplina)</code></pre>
-</div>
-<div id="procesamiento-de-la-base-de-datos-tidydata" class="section level3">
-<h3>Procesamiento de la base de datos tidydata</h3>
+<p>Procesamiento de la base de datos formato tidydata</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
 <pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
@@ -50,17 +56,12 @@ output:
 <pre class="r"><code>    premios.nobel2 &lt;- spread(data = premios.nobel, key = Disciplina, value = Numero) 
     premios.nobel2[is.na(premios.nobel2)] = 0
     premios.nobel2$Total &lt;- apply(premios.nobel2[,2:7],1,sum)
-    
     premios.nobel3&lt;- premios.nobel2[-40,]
-    
     premios.nobel4 &lt;-  subset(premios.nobel3,premios.nobel3$Total&gt;8)</code></pre>
-</div>
-<div id="gráfico-de-barras" class="section level3">
-<h3>Gráfico de barras</h3>
+<p>Gráfico de barras</p>
 <pre class="r"><code>library(ggplot2)
 library(ggdark)
-library(gganimate)
-    p&lt;-ggplot(premios.nobel4, aes(x= reorder (Pais, Total), y=Total, fill=Pais,label=Total)) +
+p&lt;-ggplot(premios.nobel4, aes(x= reorder (Pais, Total), y=Total, fill=Pais,label=Total)) +
       geom_bar(stat=&quot;identity&quot;) +labs(title = &quot;Top 20 países con más Premios Nobel hasta el 2019&quot;,
       caption=&quot;Fuente: Wikipedia \nElaboración: @dhecheverria | @ramirovillamey \nNota: Incluye el Premio de Ciencias Económicas \n del Banco de Suecia en Memoria de Alfred Nobel &quot;,y=&quot;Número de galardonados&quot;,x=&quot;&quot;)+
       dark_theme_gray()+
@@ -74,18 +75,17 @@ library(gganimate)
 ## To change them back, use invert_geom_defaults().</code></pre>
 <pre class="r"><code>    p</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-</div>
 <div id="animación-1" class="section level3">
 <h3>Animación 1</h3>
-<pre class="r"><code>#opcion 1
+<pre class="r"><code>library(gganimate)
+
     p+transition_states(Total, wrap = FALSE) +
       shadow_mark()</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.gif" /><!-- --></p>
 </div>
 <div id="animación-2" class="section level3">
 <h3>Animación 2</h3>
-<pre class="r"><code>    #opcion 2
-    p + transition_states(
+<pre class="r"><code>    p + transition_states(
       Total,
       transition_length = 5,
       state_length = 1) +
